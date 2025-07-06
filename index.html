@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanilla JS SPA Template - A Guided Tour</title>
+    <meta name="description" content="A flexible, single-page application template built with HTML, CSS, and vanilla JavaScript.">
+
+    <!-- Favicon Placeholders -->
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <!-- Google Fonts (Optional) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&family=Poppins:wght@400;500;600&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons (Optional) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header: The main navigation bar. It is 'sticky' and always visible. -->
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="#home" class="logo-link" aria-label="Template Home">
+                <span class="logo-text">SPA<span class="logo-highlight">.</span>js</span>
+                <span class="logo-full-text">SPA Template</span>
+            </a>
+
+            <!-- The navigation menu. The 'data-section' attribute is crucial for the JavaScript functionality. -->
+            <nav class="main-navigation" aria-label="Main Site Navigation">
+                <ul>
+                    <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
+                    <li><a href="#how-it-works" class="nav-link" data-section="how-it-works">How It Works</a></li>
+                    <li><a href="#components" class="nav-link" data-section="components">Components</a></li>
+                    <li><a href="#customization" class="nav-link" data-section="customization">Customization</a></li>
+                </ul>
+            </nav>
+
+            <button id="example-modal-btn" class="btn btn-secondary">
+                <i class="fa-solid fa-window-maximize"></i> Open Modal
+            </button>
+
+                        <!-- Dark Mode Toggle Button -->
+            <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle Menu" aria-expanded="false">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Area: All your pages will go inside here as <section> elements. -->
+    <main id="main-content">
+
+        <!-- ======================== -->
+        <!-- ====== HOME PAGE ======= -->
+        <!-- ======================== -->
+        <section id="home" class="content-section active-section">
+            <div class="hero-section">
+                <div class="container hero-content">
+                    <div class="hero-text">
+                        <h1>A <span class="highlight-yellow">Flexible Foundation</span> for Your Next Project</h1>
+                        <p class="tagline">This is a lightweight, single-page application (SPA) template built with vanilla JavaScript. No frameworks, no complex build steps. Just pure HTML, CSS, and JS.</p>
+                        <button class="btn btn-primary btn-large cta-button" data-target-section="how-it-works">
+                            Learn How It Works <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    <div class="hero-image">
+                        <img src="placeholder-hero.svg" alt="Illustration of building blocks or code structure" class="hero-illustration">
+                    </div>
+                </div>
+            </div>
+
+            <div class="container section-previews">
+                <h2 class="previews-title">Explore the Template...</h2>
+                <div class="preview-grid">
+                    <article class="preview-card" data-target-section="how-it-works">
+                        <div class="preview-icon laugh-icon"><i class="fa-solid fa-gears"></i></div>
+                        <h3>How It Works</h3>
+                        <p>Understand the core logic behind the single-page navigation and content switching.</p>
+                        <span class="preview-link">See the Logic <i class="fa-solid fa-chevron-right"></i></span>
+                    </article>
+
+                    <article class="preview-card" data-target-section="components">
+                        <div class="preview-icon smile-icon"><i class="fa-solid fa-cubes"></i></div>
+                        <h3>Component Examples</h3>
+                        <p>See pre-built components like modals, cards, and interactive elements you can reuse.</p>
+                        <span class="preview-link">View Components <i class="fa-solid fa-chevron-right"></i></span>
+                    </article>
+
+                    <article class="preview-card" data-target-section="customization">
+                        <div class="preview-icon play-icon"><i class="fa-solid fa-paint-brush"></i></div>
+                        <h3>Easy Customization</h3>
+                        <p>Learn how to add your own content, change the styling, and add new sections.</p>
+                        <span class="preview-link">Start Customizing <i class="fa-solid fa-chevron-right"></i></span>
+                    </article>
+                </div>
+            </div>
+        </section> <!-- End Home Section -->
+
+        <!-- ======================== -->
+        <!-- ===== HOW IT WORKS ===== -->
+        <!-- ======================== -->
+        <section id="how-it-works" class="content-section">
+            <div class="container section-container">
+                <header class="section-header">
+                    <h2><i class="fa-solid fa-gears icon-header"></i> How It Works: The Core Logic</h2>
+                    <p>The magic is in `script.js`. It listens for clicks on navigation links and shows or hides content sections accordingly.</p>
+                </header>
+
+                <div class="subsection">
+                    <h3>1. HTML Structure</h3>
+                    <p>The site is built around a simple but powerful structure. The `<main>` tag holds multiple `<section>` elements. Each section acts as a "page".</p>
+                    <pre><code class="language-html">&lt;main id="main-content"&gt;
+    &lt;section id="home" class="content-section active-section"&gt;
+        &lt;!-- Home page content --&gt;
+    &lt;/section&gt;
+    &lt;section id="how-it-works" class="content-section"&gt;
+        &lt;!-- This section's content --&gt;
+    &lt;/section&gt;
+    &lt;!-- Add more sections here --&gt;
+&lt;/main&gt;</code></pre>
+                    <p>Notice that only the "home" section has the `active-section` class initially. The others are hidden by default via CSS (`.content-section { display: none; }`).</p>
+                </div>
+
+                <div class="subsection">
+                    <h3>2. JavaScript Navigation</h3>
+                    <p>When you click a navigation link (e.g., "How It Works"), the JavaScript performs these steps:</p>
+                    <ol>
+                        <li><strong>Prevents Default Action:</strong> It stops the link from trying to jump to an anchor (`e.preventDefault()`).</li>
+                        <li><strong>Gets Target ID:</strong> It reads the `data-section` attribute from the link you clicked (e.g., `data-section="how-it-works"`).</li>
+                        <li><strong>Switches Classes:</strong> It loops through all `content-section` elements. It removes `active-section` from the currently visible section and adds it to the target section.</li>
+                        <li><strong>Updates Nav Highlight:</strong> It updates the `.active` class on the navigation links to highlight the current page.</li>
+                    </ol>
+                    <p>Here is the key function from `script.js` that handles this:</p>
+                     <pre><code class="language-js">const showSection = (targetId) => {
+    contentSections.forEach(section => {
+        if (section.id === targetId) {
+            section.classList.remove('hidden');
+            section.classList.add('active-section');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+            section.classList.add('hidden');
+            section.classList.remove('active-section');
+        }
+    });
+    setActiveLink(targetId);
+};</code></pre>
+                </div>
+            </div>
+        </section> <!-- End How It Works Section -->
+
+        <!-- ======================== -->
+        <!-- ====== COMPONENTS ====== -->
+        <!-- ======================== -->
+        <section id="components" class="content-section">
+             <div class="container section-container">
+                 <header class="section-header">
+                    <h2><i class="fa-solid fa-cubes icon-header"></i> Reusable Components</h2>
+                    <p>This template includes several pre-styled components to get you started.</p>
+                </header>
+
+                <div class="subsection">
+                    <h3>Content Cards</h3>
+                    <p>Flexible cards for displaying images, text, and actions. The example below shows a typical structure.</p>
+                    <div class="feed-grid">
+                        <article class="content-card">
+                            <div class="card-media">
+                                <img src="placeholder-meme1.jpg" alt="A placeholder image">
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">Card Title</h4>
+                                <p class="card-text">This is the body of the card. You can put any content you want here.</p>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn" aria-label="Action 1"><i class="fa-solid fa-heart"></i></button>
+                                <button class="action-btn" aria-label="Action 2"><i class="fa-solid fa-share-nodes"></i></button>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="subsection card compliment-section">
+                     <h3>Interactive Elements</h3>
+                     <p>This is an example of a simple interactive component. Clicking the button generates random text using JavaScript.</p>
+                     <button id="compliment-btn" class="btn btn-primary">Generate Text!</button>
+                     <p id="compliment-display" class="compliment-text"></p>
+                </div>
+                 
+                 <div class="subsection">
+                    <h3>Modal Dialog</h3>
+                    <p>A modal can be triggered by any element. This one is triggered by the "Open Modal" button in the header. The modal's HTML is at the bottom of `index.html`, and the logic is in `script.js`. It's fully accessible with keyboard controls (Escape key) and focus management.</p>
+                </div>
+            </div>
+        </section> <!-- End Components Section -->
+
+        <!-- ======================== -->
+        <!-- ==== CUSTOMIZATION ===== -->
+        <!-- ======================== -->
+        <section id="customization" class="content-section">
+            <div class="container section-container">
+                 <header class="section-header">
+                     <h2><i class="fa-solid fa-paint-brush icon-header"></i> Customizing Your Site</h2>
+                    <p>Follow these steps to make this template your own.</p>
+                 </header>
+
+                 <div class="subsection">
+                     <h3>1. Change the Color Scheme</h3>
+                     <p>Open `style.css`. At the top, you'll find CSS variables in the `:root` block. Simply change these color codes to match your brand.</p>
+                     <pre><code class="language-css">:root {
+    --sunny-yellow: #FFDA63; /* Change this */
+    --sky-blue: #A0D2DB;     /* Change this */
+    --coral: #FF7F50;        /* Change this */
+    /* ... and so on */
+}</code></pre>
+                 </div>
+
+                 <div class="subsection">
+                     <h3>2. Add a New Section (Page)</h3>
+                     <p>Let's say you want to add an "About" page.</p>
+                     <ol>
+                        <li><strong>In `index.html` (Header):</strong> Add a new link to the navigation list.
+                        <pre><code class="language-html">&lt;li&gt;&lt;a href="#about" class="nav-link" data-section="about"&gt;About&lt;/a&gt;&lt;/li&gt;</code></pre>
+                        </li>
+                        <li><strong>In `index.html` (Main Content):</strong> Add the new section inside the `<main>` tag. Copy the structure of another section.
+                        <pre><code class="language-html">&lt;section id="about" class="content-section"&gt;
+    &lt;div class="container section-container"&gt;
+        &lt;h2&gt;About Us&lt;/h2&gt;
+        &lt;p&gt;Your new page content goes here!&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+                        </li>
+                     </ol>
+                     <p>That's it! The JavaScript will automatically detect the new section and link, and everything will work without any changes to `script.js`.</p>
+                 </div>
+
+                 <div class="subsection">
+                    <h3>3. Edit Interactive Content</h3>
+                    <p>To change the text generated by the "Generate Text" button on the Components page, find the `compliments` array in `script.js` and edit the strings.</p>
+                     <pre><code class="language-js">const compliments = [
+    "Your new string one.",
+    "Your new string two.",
+    "And so on..."
+];</code></pre>
+                 </div>
+            </div>
+        </section> <!-- End Customization Section -->
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-about">
+                <h4>Your Site Name</h4>
+                <p>A short description of your site.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Links</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-newsletter">
+                <h4>Newsletter</h4>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="your.email@example.com" required aria-label="Email for newsletter">
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year"></span> Your Company Name. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Modal: This is hidden by default. JS controls its visibility. -->
+    <div id="quick-laugh-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal-btn" aria-label="Close Modal">&times;</button>
+            <h3>Example Modal</h3>
+            <div id="quick-laugh-content">
+                <p>This is a modal window. You can put any content you want here, like a form, an image, or important information. It can be closed with the 'X' button, the Escape key, or by clicking outside of this box.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript File -->
+    <script src="script.js"></script>
+</body>
+</html>
