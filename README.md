@@ -91,6 +91,7 @@ git clone [your-repo-url]
 Fully compatible with all modern browsers including Chrome, Firefox, Safari, and Edge.
 
 ## License
-Personal use. 
+
+- Personal use. 
 ---
 p e a c e
